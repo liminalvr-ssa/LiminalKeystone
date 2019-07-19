@@ -5,13 +5,14 @@ using UnityEngine;
 public class InitExpereince : MonoBehaviour {
 
     public static Vector3 CurrentAvatarTarget = GameGraphics.AVATAR_ZERO;
-
+    
+    public float moveSpeed;
     void Start() {
         GameGraphics.loadResources();
     }
 
-    private void Update() {
-        GameGraphics.AVATAR.transform.position = Vector3.Lerp(GameGraphics.AVATAR.transform.position, CurrentAvatarTarget, Time.time * Time.deltaTime * .05f);
+    private void Update() 
+    {
+        GameGraphics.AVATAR.transform.position = Vector3.MoveTowards(GameGraphics.AVATAR.transform.position, CurrentAvatarTarget, moveSpeed * Time.deltaTime);
     }
-
 }

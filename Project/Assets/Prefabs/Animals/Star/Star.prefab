@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4107061421470856493}
   - component: {fileID: 5408114514914044291}
   - component: {fileID: 4444664367528048610}
-  - component: {fileID: 8257802482751278723}
   m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
@@ -97,19 +96,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6, y: 6, z: 6}
   m_Center: {x: 0.063617304, y: 0.0000012880769, z: -0.22592606}
---- !u!114 &8257802482751278723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5649803975752636081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d421758e9371d5b4cadea16e31a1a52a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  travelPoint: {fileID: 0}
 --- !u!1 &6125222345664243434
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +106,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4897553912160454901}
   - component: {fileID: 7940220964783948479}
-  - component: {fileID: 7335581872402879908}
   m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
@@ -194,16 +179,3 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.06362116, y: -0.00000011920929, z: -0.22592649}
     m_Extent: {x: 1.279165, y: 1.2578315, z: 1.1674109}
   m_DirtyAABB: 0
---- !u!114 &7335581872402879908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6125222345664243434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d421758e9371d5b4cadea16e31a1a52a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  travelPoint: {fileID: 0}
