@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundAnalyzer : MonoBehaviour {
 
     AudioSource sound;
+    public int matReferencer;
     public Material affectedTexture;
     public float outputOffest;
     public float reactionSpeedMultiplayer = 1;
@@ -28,6 +29,8 @@ public class SoundAnalyzer : MonoBehaviour {
         output = Vector3.zero;
 
         sound.clip.GetData(soundData, 0);
+
+        affectedTexture = GameGraphics.MATS[matReferencer];
     }
 
     void Update() {

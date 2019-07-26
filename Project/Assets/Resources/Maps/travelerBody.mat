@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: travalerBody
+  m_Name: travelerBody
   m_Shader: {fileID: 4800000, guid: ac98e9d1d9792de46851cd6b8ee63fd7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
