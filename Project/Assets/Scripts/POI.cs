@@ -5,8 +5,9 @@ using UnityEngine.EventSystems;
 
 public class POI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
     public static int POICounter = 0;
+
     bool isPOIEnbaled;
-    public bool isPOICurrent;
+    public int ID;
 
     public Transform travelPoint;
 
@@ -21,6 +22,7 @@ public class POI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IP
     Light light1;
     Light light2;
     Light light3;
+    public Light[] Lights;
     BoxCollider boxCollider;
 
     float fade = 0f;
@@ -39,32 +41,32 @@ public class POI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IP
             return lightOn;
         }
         set {
-            lightSource.enabled = value;
-            light1.enabled = light2.enabled = light3.enabled = value;
-        }
-    }
-
-    int positiveInt {
-        set {
-            i_pos = value < 0 ? 0 : value;
-        }
-        get {
-            return i_pos;
+            lightSource.enabled = light1.enabled = light2.enabled = light3.enabled = value;
         }
     }
 
     public int togglePOI {
         set {
-            if (POICounter == GameGraphics.POI.Length) {
+            if (POICounter >= GameGraphics.POI.Length) {
                 isAllPOIEnabled = true;
                 return;
             }
 
-            positiveInt = POICounter - 1;
+            for (i = 0; i < GameGraphics.POI.Length; i++) {
+                GameGraphics.POI[i].GetComponent<BoxCollider>().enabled = (value == i);
+            }
+        }
+    }
+
+    public int togglePOILight {
+        set {
+            POI p;
 
             for (i = 0; i < GameGraphics.POI.Length; i++) {
-                GameGraphics.POI[i].GetComponent<BoxCollider>().enabled = (value == i);    
-                GameGraphics.POI[i].GetComponent<POI>().isPOICurrent = (i == positiveInt);
+                p = GameGraphics.POI[i].GetComponent<POI>();
+                if (p.Lights.Length > 0) {
+                    p.isLightEnabled = (value == i);
+                }
             }
         }
     }
@@ -86,6 +88,7 @@ public class POI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IP
         light1 = transform.GetChild(1).GetComponent<Light>();
         light2 = transform.GetChild(2).GetComponent<Light>();
         light3 = transform.GetChild(3).GetComponent<Light>();
+        Lights = new Light[] { lightSource, light1, light2, light3 };
 
         boxCollider = GetComponent<BoxCollider>();
         hoverRender = transform.GetChild(4).GetComponent<MeshRenderer>();
@@ -94,7 +97,6 @@ public class POI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IP
         hoverRender.enabled = false;
 
         isLightEnabled = lightOnPublic;
-        togglePOI = POICounter;
     }
 
     private void Update() {
@@ -109,58 +111,34 @@ public class POI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IP
         //GameGraphics.STAR_MAT.SetColor(fresnelColor, Color.black);
 
         //lightSource.color = GameGraphics.COLORS[GameGraphics.PURPLE];
-        
+
         InitExpereince.CurrentAvatarTarget = travelPoint.localPosition - GameGraphics.HEAD_ZERO;
+        togglePOILight = ID;
+
         if (!isAllPOIEnabled) {
             POICounter++;
-            togglePOI = POICounter;
-            //boxCollider.enabled = false;
+            togglePOI = ID + 1;
+            boxCollider.enabled = false;
         }
-
-        //Debug.Log(m + " Clicked");
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
         //GameGraphics.STAR_MAT.SetColor(fresnelColor, GameGraphics.COLORS[GameGraphics.GREEN]);
-
         //lightSource.color = GameGraphics.COLORS[GameGraphics.GREEN];
 
         hoverRender.enabled = true;
-        isLightEnabled = true;
 
         fadeLimit = 0.25f;
         fadeTime = 0;
-
-        //for (int i = 0; i < GameGraphics.POI.Length; i++) {
-        //gameObject.GetComponent<TravelClick>().isLightEnabled = true; //(gameObject == GameGraphics.STAR_POI);
-        //}
-
-        //Debug.Log(transform.name + " Enter");
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        POI poi;
         //GameGraphics.STAR_MAT.SetColor(fresnelColor, GameGraphics.COLORS[GameGraphics.PURPLE]);
-
         //lightSource.color = GameGraphics.COLORS[GameGraphics.PURPLE];
 
-        //hoverRender.enabled = false;
         fadeLimit = 0;
         fadeTime = 0;
         InitExpereince.TIME = 0;
-
-        for (i = 0; i < GameGraphics.POI.Length; i++) {
-            poi = GameGraphics.POI[i].GetComponent<POI>();
-            poi.isLightEnabled = poi.isPOICurrent;
-        }
-
-        //for (int i = 0; i < GameGraphics.POI.Length; i++) {
-        //gameObject.GetComponent<TravelClick>().isLightEnabled = false; //(gameObject == GameGraphics.STAR_POI);
-        //}
-
-
-
-        //Debug.Log(transform.name + " Exit");
     }
 
 }

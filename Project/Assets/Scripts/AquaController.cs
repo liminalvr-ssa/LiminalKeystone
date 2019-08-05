@@ -20,8 +20,8 @@ public class AquaController : MonoBehaviour {
 
     void Update() {
         hairRenderer.SetBlendShapeWeight(HAIR_MORPH, Mathf.PingPong(Time.time*10, 30));
-        legsRenderer.SetBlendShapeWeight(RIPPLE_MORPH, Mathf.PingPong(Time.time * 10, 100));
-        legsRenderer.SetBlendShapeWeight(SWIM_MORPH, Mathf.PingPong(Time.time * 2, 5));
+        legsRenderer.SetBlendShapeWeight(RIPPLE_MORPH, Mathf.PingPong(Time.time * 60, 100));
+        legsRenderer.SetBlendShapeWeight(SWIM_MORPH, Mathf.PingPong(Time.time * 10, 45));
 
         yPos.y = yOrigin + Mathf.PingPong(Time.time*.005f, .01f);
         transform.position = yPos;

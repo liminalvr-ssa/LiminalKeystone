@@ -15,6 +15,9 @@ public class InitExpereince : MonoBehaviour {
         GameObject.Find("Star").GetComponent<SkinnedMeshRenderer>().material = GameGraphics.STAR_MAT;
         GameObject.Find("AquaLegs").GetComponent<SkinnedMeshRenderer>().material = GameGraphics.AQUA_MAT;
         GameObject.Find("Traveler").GetComponent<SkinnedMeshRenderer>().material = GameGraphics.TRAVELER_MAT;
+
+        GameGraphics.POI[0].GetComponent<POI>().togglePOI = 0;
+        GameGraphics.POI[0].GetComponent<POI>().togglePOILight = 0;
     }
 
     private void Update() 

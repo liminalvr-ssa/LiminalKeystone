@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SoundAnalyzer : MonoBehaviour {
 
-    AudioSource sound;
+    public AudioSource sound;
     public int matReferencer;
-    public Material affectedTexture;
+    Material affectedTexture;
     public float outputOffest;
     public float reactionSpeedMultiplayer = 1;
     public float valueMultiplayer = 1;
@@ -21,7 +21,7 @@ public class SoundAnalyzer : MonoBehaviour {
     Vector3 output;
 
     void Start() {
-        sound = GetComponent<AudioSource>();
+        //sound = GetComponent<AudioSource>();
         samplesNum = 512;//sound.clip.samples;
         soundData = new float[samplesNum];//new float[samplesNum];
         seeker = 0;
@@ -44,7 +44,6 @@ public class SoundAnalyzer : MonoBehaviour {
         //} else {
         //affectedTexture.SetFloat(modifier, Mathf.Lerp(affectedTexture.GetFloat(modifier), -.3f, Time.time * reactionSpeedMultiplayer * Time.deltaTime));
         //}
-        //Debug.Log(precomp);
 
         //seeker++;
         //if (seeker == samplesNum-1) {
