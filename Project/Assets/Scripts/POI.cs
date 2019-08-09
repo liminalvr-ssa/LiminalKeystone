@@ -5,6 +5,11 @@ using UnityEngine.EventSystems;
 
 public class POI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
     public static int POICounter = 0;
+    public static AudioSource HOVER;
+    public static AudioSource SELECTION;
+    public static AudioSource TRAVEL;
+
+    AudioSource[] FXs;
 
     bool isPOIEnbaled;
     public int ID;
@@ -84,6 +89,11 @@ public class POI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IP
     }
 
     private void Start() {
+        FXs = GameObject.Find("EnvironmentAudio").GetComponents<AudioSource>();
+        HOVER = FXs[1];
+        SELECTION = FXs[2];
+        TRAVEL = FXs[3];
+
         lightSource = transform.GetChild(0).GetComponent<Light>();
         light1 = transform.GetChild(1).GetComponent<Light>();
         light2 = transform.GetChild(2).GetComponent<Light>();
@@ -120,6 +130,9 @@ public class POI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IP
             togglePOI = ID + 1;
             boxCollider.enabled = false;
         }
+
+        SELECTION.Play();
+        TRAVEL.Play();
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
@@ -130,6 +143,8 @@ public class POI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IP
 
         fadeLimit = 0.25f;
         fadeTime = 0;
+
+        HOVER.Play();
     }
 
     public void OnPointerExit(PointerEventData eventData) {

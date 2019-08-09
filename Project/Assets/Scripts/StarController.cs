@@ -13,16 +13,21 @@ public class StarController : MonoBehaviour {
     Vector3 yPos;
     float yOrigin;
 
+    public float speed = 0.2f;
+    float t;
+
     void Start() {
         yPos = transform.position;
         yOrigin = yPos.y;
     }
 
     void Update() {
-        eyesRenderer.SetBlendShapeWeight(EYES_OUT_MORPH, Mathf.PingPong(Time.time*10, 30));
-        bodyRenderer.SetBlendShapeWeight(BODY_MORPH, Mathf.PingPong(Time.time*2, 5));
+        eyesRenderer.SetBlendShapeWeight(EYES_OUT_MORPH, Mathf.PingPong(t*10, 30));
+        bodyRenderer.SetBlendShapeWeight(BODY_MORPH, Mathf.PingPong(t*2, 5));
 
-        yPos.y = yOrigin + Mathf.PingPong(Time.time*.005f, .01f);
+        yPos.y = yOrigin + Mathf.PingPong(t*.005f, .01f);
         transform.position = yPos;
+
+        t += speed;
     }
 }
