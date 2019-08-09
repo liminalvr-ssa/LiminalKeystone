@@ -65,7 +65,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _skinModifier: -0.36551276
+    - _skinModifier: -0.38778386
     m_Colors:
     - Color_9FE96150: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
