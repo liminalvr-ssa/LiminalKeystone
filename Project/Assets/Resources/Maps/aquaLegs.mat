@@ -72,10 +72,10 @@ Material:
     - _affectRegion: 1
     - _skinModifier: 0.4168157
     - _time: 41
-    - _waveDetail: 1.7801152
+    - _waveDetail: 12.7
     - _wavePresence: 1
-    - _waveStrength: 0.022668539
-    - _waveStrengthPresence: 0
+    - _waveStrength: 0.2
+    - _waveStrengthPresence: 1
     - _waveStrengthPrsence: 0
     - _waveTime: 1
     m_Colors:
